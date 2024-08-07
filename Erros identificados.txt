@@ -1,0 +1,63 @@
+Método: POST
+Rota: POST/conteudos
+  1. O Request Body na documentação contém dois campos não aceitos pela API. Esses campos são "id" e "dataCadastro"
+
+  2. O retorno para o status 201 na documentação é "Conteúdo criado com sucesso". Na verdade está retornando o body do cadastro completo:
+    {
+    "id": 13,
+    "titulo": "Conteúdo 1",
+    "descricao": "Descrição do Conteúdo 1",
+    "tipoConteudo": "Teste de Unidade",
+    "conteudo": "Conteúdo de Testes de Unidades 1",
+    "dataCadastro": "2024-07-17T23:57:40.525Z"
+    }
+
+
+Método: GET
+Rota: GET/conteudos/{id}
+  1. O retorno para o status 200 na documentação é "Conteúdo encontrado" e o body do conteúdo pesquisado conforme abaixo:
+    {
+    "id": "string",
+    "titulo": "string",
+    "descricao": "string",
+    "tipoConteudo": "string",
+    "conteudo": "string",
+    "dataCadastro": "2024-07-18T00:00:27.798Z"
+    }
+
+    Nesse body da documentação o "id" está constando como string e na verdade é inteiro.
+    Não está retornando a mensagem "Conteúdo encontrado", traz apenas o body do cadastro consultado:
+    {
+      "id": 13,
+      "titulo": "Conteúdo 1",
+      "descricao": "Descrição do Conteúdo 1",
+      "tipoConteudo": "Teste de Unidade",
+      "conteudo": "Conteúdo de Testes de Unidades 1",
+      "dataCadastro": "2024-07-17T23:57:40.525Z"
+    }
+
+  2. O retorno para o status 404 na documentação é "Conteúdo não encontrado". Na verdade está retornando "O conteúdo com o ID: {id} não foi encontrado."
+
+Método: PUT
+Rota: PUT/conteudos/{id}
+  1. O Request Body na documentação contém dois campos não aceitos pela API. Esses campos são "id" e "dataCadastro"
+  
+  2. O retorno para o status 200 na documentação é "Conteúdo atualizado com sucesso", na verdade está retornando o body do conteúdo alterado conforme abaixo:
+    {
+      "id": 13,
+      "titulo": "Conteúdo 1",
+      "descricao": "Descrição do Conteúdo 1",
+      "tipoConteudo": "Teste de Unidade",
+      "conteudo": "Conteúdo de Testes de Unidades 1",
+      "dataCadastro": "2024-07-17T23:57:40.525Z"
+    }
+
+  3. O retorno para o status 404 na documentação é "Conteúdo não encontrado". Na verdade está retornando "O contedúdo que você está tentando alterar não existe na base de dados. ID INFORMADO: {id}"
+
+Método: DELETE 
+Rota: DELETE/conteudos/{id}
+  1. O retorno para o status 200 na documentação é "Conteúdo removido com sucesso". Na verdade está retornando "O conteúdo foi removido com sucesso!"
+
+  2. O retorno para o status 404 na documentação é "Conteúdo não encontrado". Na verdade está retornando "Erro ao excluir o conteúdo, o conteúdo não foi encontrado."
+
+
